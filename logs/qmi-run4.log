@@ -1,0 +1,97 @@
+W (15371) app_main: [ok/0x0000] line-observer: HUNG phase=11(donESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40378e4e
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x14f0
+load:0x403c8700,len:0xda0
+load:0x403cb700,len:0x2f58
+entry 0x403c8908
+I (24) boot: ESP-IDF v6.0.1 2nd stage bootloader
+I (24) boot: compile time Sep 16 2026 21:53:31
+I (25) boot: Multicore bootloader
+I (25) boot: chip revision: v0.2
+I (27) boot: efuse block revision: v1.3
+I (31) boot.esp32s3: Boot SPI Speed : 80MHz
+I (35) boot.esp32s3: SPI Mode       : DIO
+I (39) boot.esp32s3: SPI Flash Size : 16MB
+I (43) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (50) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (69) boot:  2 factory          factory app      00 00 00010000 00100000
+I (76) boot: End of partition table
+I (79) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0b74ch ( 46924) map
+I (95) esp_image: segment 1: paddr=0001b774 vaddr=3fc8fd00 size=033b4h ( 13236) load
+I (98) esp_image: segment 2: paddr=0001eb30 vaddr=40374000 size=014e8h (  5352) load
+I (102) esp_image: segment 3: paddr=00020020 vaddr=42000020 size=13a20h ( 80416) map
+I (123) esp_image: segment 4: paddr=00033a48 vaddr=403754e8 size=0a70ch ( 42764) load
+I (133) esp_image: segment 5: paddr=0003e15c vaddr=50000000 size=00024h (    36) load
+I (139) boot: Loaded app from partition at offset 0x10000
+I (139) boot: Disabling RNG early entropy source...
+I (151) octal_psram: vendor id    : 0x0d (AP)
+I (151) octal_psram: dev id       : 0x02 (generation 3)
+I (151) octal_psram: density      : 0x03 (64 Mbit)
+I (153) octal_psram: good-die     : 0x01 (Pass)
+I (157) octal_psram: Latency      : 0x01 (Fixed)
+I (162) octal_psram: VCC          : 0x01 (3V)
+I (166) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (171) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (175) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (180) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (185) octal_psram: DriveStrength: 0x00 (1/1)
+I (189) esp_psram: Found 8MB PSRAM device
+I (193) esp_psram: Speed: 40MHz
+I (196) cpu_start: Multicore app
+I (930) esp_psram: SPI SRAM memory test OK
+I (938) cpu_start: GPIO 44 and 43 are used as console UART I/O pins
+I (939) cpu_start: Pro cpu start user code
+I (939) cpu_start: cpu freq: 240000000 Hz
+I (940) app_init: Application information:
+I (944) app_init: Project name:     pathfinder_single
+I (949) app_init: App version:      9724359
+I (953) app_init: Compile time:     Sep 16 2026 21:51:19
+I (958) app_init: ELF file SHA256:  a1575f45f...
+I (962) app_init: ESP-IDF:          v6.0.1
+I (966) efuse_init: Min chip rev:     v0.0
+I (970) efuse_init: Max chip rev:     v0.99 
+I (974) efuse_init: Chip rev:         v0.2
+I (978) heap_init: Initializing. RAM available for dynamic allocation:
+I (984) heap_init: At 3FC93AE0 len 00055C30 (343 KiB): RAM
+I (989) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (994) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (1000) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (1005) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator
+I (1012) spi_flash: detected chip: winbond
+I (1015) spi_flash: flash io: dio
+I (1019) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1025) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1040) main_task: Started on CPU0
+I (1043) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1051) main_task: Calling app_main()
+W (1054) app_main: [ok/0x0000] QMI8658 minimal bring-up mode enabled
+I (1062) tca9554: detected IO expander at 0x20 output=0xFF config=0xF8
+I (1068) board_support: [ok/0x0000] board pins: i2c(0,10,11) lcd(qspi=46,45,42,41,40 cs=21 te=18 bl=5 rst=EXIO2) touch(int=4,rst=EXIO1) rtc(int=9) imu(int1=EXIO5,int2=EXIO4) mic(ws=2 sck=15 sd=39) speaker(bclk=48 lrc=38 dout=47) sd(sck=14 miso=16 mosi=17 cs=EXIO3) bat_adc=8 boot=0
+I (1091) pcf85063: detected RTC at 0x51 ctrl1=0x00
+W (1096) app_main: [ok/0x0000] minimal bring-up rtc probe result: ESP_OK
+W (1102) qmi8658: minimal bring-up start: settle=120000us
+W (1227) qmi8658: minimal bring-up detect: probing qmi8658 address list
+I (1228) qmi8658: detected QMI8658 addr=0x6B chip=0x05
+W (1228) qmi8658: minimal bring-up detect result: err=ESP_OK addr=0x6B chip=0x05
+W (1234) qmi8658: minimal bring-up read revision: addr=0x6B reg=0x01 timeout=20ms
+W (1242) qmi8658: minimal bring-up read revision result: err=ESP_OK revision=0x7C
+W (1249) qmi8658: minimal bring-up write ctrl7: addr=0x6B reg=0x08 value=0x43 timeout=20ms
+W (1257) qmi8658: minimal bring-up write ctrl7 result: err=ESP_OK
+W (1260) app_main: [ok/0x0000] line-observer: phase 1(settle) -> 5(write-ctrl7) after 0ms
+W (1263) qmi8658: minimal bring-up write ctrl6: addr=0x6B reg=0x07 value=0x00 timeout=20ms
+W (1279) qmi8658: minimal bring-up write ctrl6 result: err=ESP_OK
+W (1284) qmi8658: minimal bring-up readback whoami: addr=0x6B reg=0x00 timeout=20ms
+W (1292) qmi8658: minimal bring-up readback revision: addr=0x6B reg=0x01 timeout=20ms
+W (1300) qmi8658: minimal bring-up readback ctrl7: addr=0x6B reg=0x08 timeout=20ms
+W (1307) qmi8658: minimal bring-up readback ctrl6: addr=0x6B reg=0x07 timeout=20ms
+W (1314) qmi8658: minimal bring-up readback: whoami=ESP_OK/0x05 revision=ESP_OK/0x7C ctrl7=ESP_OK/0x43 ctrl6=ESP_OK/0x00
+W (1325) qmi8658: minimal bring-up official sequence completed: addr=0x6B detect=0x05 revision_before=0x7C
+W (1334) app_main: [ok/0x0000] minimal bring-up qmi result: ESP_OK
+W (1371) app_main: [ok/0x0000] line-observer: phase 5(write-ctrl7) -> 11(done) after 0ms

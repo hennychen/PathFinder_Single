@@ -1,0 +1,14 @@
+# ESP-IDF build artifacts
+build/
+build-*/
+
+# ESP-IDF generated config (defaults are tracked)
+sdkconfig
+sdkconfig.old
+
+# Auto-downloaded managed components (restored from dependencies.lock)
+managed_components/
+
+# IDE
+.vscode/
+.idea/

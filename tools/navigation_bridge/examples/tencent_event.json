@@ -1,0 +1,7 @@
+{
+  "maneuver": "arrive",
+  "stepDistance": 20,
+  "remainingDistance": 20,
+  "remainingTime": 15,
+  "nextRoadName": "Destination"
+}

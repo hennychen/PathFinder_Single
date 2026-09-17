@@ -1,0 +1,169 @@
+I (115) esp_image: segment 1: paddr=000371ec vaddr=3fc99a00 sizeESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40381b0e
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x14f0
+load:0x403c8700,len:0xda0
+load:0x403cb700,len:0x2f58
+entry 0x403c8908
+I (24) boot: ESP-IDF v6.0.1 2nd stage bootloader
+I (24) boot: compile time Sep 16 2026 16:18:58
+I (25) boot: Multicore bootloader
+I (25) boot: chip revision: v0.2
+I (27) boot: efuse block revision: v1.3
+I (31) boot.esp32s3: Boot SPI Speed : 80MHz
+I (35) boot.esp32s3: SPI Mode       : DIO
+I (39) boot.esp32s3: SPI Flash Size : 16MB
+I (43) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (50) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (69) boot:  2 factory          factory app      00 00 00010000 00100000
+I (76) boot: End of partition table
+I (79) esp_image: segment 0: paddr=00010020 vaddr=3c090020 size=271c4h (160196) map
+I (115) esp_image: segment 1: paddr=000371ec vaddr=3fc99a00 size=04a90h ( 19088) load
+I (119) esp_image: segment 2: paddr=0003bc84 vaddr=40374000 size=04394h ( 17300) load
+I (124) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=8a558h (566616) map
+I (228) esp_image: segment 4: paddr=000ca580 vaddr=40378394 size=11590h ( 71056) load
+I (244) esp_image: segment 5: paddr=000dbb18 vaddr=50000000 size=00024h (    36) load
+I (244) esp_image: segment 6: paddr=000dbb44 vaddr=600fe000 size=00058h (    88) load
+I (257) boot: Loaded app from partition at offset 0x10000
+I (257) boot: Disabling RNG early entropy source...
+I (269) octal_psram: vendor id    : 0x0d (AP)
+I (270) octal_psram: dev id       : 0x02 (generation 3)
+I (270) octal_psram: density      : 0x03 (64 Mbit)
+I (272) octal_psram: good-die     : 0x01 (Pass)
+I (276) octal_psram: Latency      : 0x01 (Fixed)
+I (280) octal_psram: VCC          : 0x01 (3V)
+I (284) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (289) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (294) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (299) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (304) octal_psram: DriveStrength: 0x00 (1/1)
+I (308) esp_psram: Found 8MB PSRAM device
+I (312) esp_psram: Speed: 40MHz
+I (315) cpu_start: Multicore app
+I (1049) esp_psram: SPI SRAM memory test OK
+I (1057) cpu_start: GPIO 44 and 43 are used as console UART I/O pins
+I (1058) cpu_start: Pro cpu start user code
+I (1058) cpu_start: cpu freq: 240000000 Hz
+I (1059) app_init: Application information:
+I (1063) app_init: Project name:     pathfinder_single
+I (1068) app_init: App version:      9724359
+I (1072) app_init: Compile time:     Sep 16 2026 15:49:51
+I (1077) app_init: ELF file SHA256:  835ff5995...
+I (1082) app_init: ESP-IDF:          v6.0.1
+I (1086) efuse_init: Min chip rev:     v0.0
+I (1090) efuse_init: Max chip rev:     v0.99 
+I (1094) efuse_init: Chip rev:         v0.2
+I (1098) heap_init: Initializing. RAM available for dynamic allocation:
+I (1104) heap_init: At 3FCA9170 len 000405A0 (257 KiB): RAM
+I (1109) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (1114) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (1120) heap_init: At 600FE058 len 00001F90 (7 KiB): RTCRAM
+I (1125) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator
+I (1132) spi_flash: detected chip: winbond
+I (1135) spi_flash: flash io: dio
+I (1139) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1145) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1161) main_task: Started on CPU0
+I (1164) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1172) main_task: Calling app_main()
+I (1177) tca9554: detected IO expander at 0x20 output=0xFF config=0xF8
+I (1183) board_support: [ok/0x0000] board pins: i2c(0,10,11) lcd(qspi=46,45,42,41,40 cs=21 te=18 bl=5 rst=EXIO2) touch(int=4,rst=EXIO1) rtc(int=9) imu(int1=EXIO5,int2=EXIO4) mic(ws=2 sck=15 sd=39) speaker(bclk=48 lrc=38 dout=47) sd(sck=14 miso=16 mosi=17 cs=EXIO3) bat_adc=8 boot=0
+E (1228) vfs_fat_sdmmc: sdmmc_card_init failed (0x107).
+E (1229) vfs_fat_sdmmc: esp_vfs_fat_sdspi_sdcard_init failed (0x107).
+W (1230) app_main: [log_init_failed/0x140B] log service skipped: ESP_ERR_TIMEOUT
+I (1236) app_main: [ok/0x0000] PathFinder Single starting
+I (1241) pcf85063: detected RTC at 0x51 ctrl1=0x00
+I (1246) app_main: [ok/0x0000] RTC read valid time 2026-01-01 08:56:40
+I (1252) qmi8658: init step: settle
+I (1375) qmi8658: init step: detect
+I (1375) qmi8658: detected QMI8658 addr=0x6B chip=0x05
+I (1375) qmi8658: init step: safe whoami probe timeout=20ms
+I (1377) qmi8658: safe WHO_AM_I addr=0x6B detect=0x05 probe=0x05
+I (1383) qmi8658: init step: ctrl1 aai
+I (1386) qmi8658: init step: ctrl2 acc 4g
+I (1390) qmi8658: init step: ctrl3 gyro 512dps
+I (1394) qmi8658: init step: ctrl5 lpf
+I (1398) qmi8658: init step: ctrl7 enable sensors
+I (1402) qmi8658: init step: ctrl6 ae mod off
+I (1406) qmi8658: QMI8658 init complete addr=0x6B chip=0x05
+I (1985) service_attitude: [ok/0x0000] attitude service ready gyro_bias=(2.872, 27.515, -0.736) dps
+W (1987) i2s_platform: i2s controller 0 has been occupied by i2s_driver
+I (1991) drivers_audio: [ok/0x0000] audio ready mic(bclk=15 ws=2 din=39 16000Hz 32bit) speaker(bclk=48 ws=38 dout=47 24000Hz 16bit)
+I (2002) service_audio: [ok/0x0000] audio policy service ready
+I (2007) voice_backend: [ok/0x0000] backend selected vendor=xiaozhi-esp32 integration=component input=16000Hz output=24000Hz
+I (2007) service_voice: [ok/0x0000] voice service bootstrap queued task=task_voice core=1 priority=6 queue_len=8
+I (2019) service_audio: [audio_policy/0x200B] audio owner=none mic(req=0 en=0) spk(req=0 en=0 mute=0) policy=idle
+I (2029) service_navigation: [ok/0x0000] navigation service ready service=0xFFF0 nav_char=0xFF01 obd_char=0xFF02 ble_ready=0 core=0 priority=3
+I (2038) service_voice: [voice_state/0x2005] voice state=idle active=0 previous_active=0
+I (2059) service_voice: [ok/0x0000] voice task ready backend=xiaozhi-esp32 integration=component core=1 priority=6
+I (2074) BLE_INIT: BT controller compile version [b7de11e]
+I (2074) BLE_INIT: Using main XTAL as clock source
+I (2078) BLE_INIT: Feature Config, ADV:1, BLE_50:1, DTM:1, SCAN:1, CCA:0, SMP:1, CONNECT:1
+I (2087) BLE_INIT: Bluetooth MAC: 94:a9:90:0f:d2:a2
+I (2092) phy_init: phy_version 711,97bcf0a2,Aug 25 2025,19:04:10
+I (2169) NimBLE: GAP procedure initiated: stop advertising.
+
+I (2171) NimBLE: GAP procedure initiated: advertise; 
+I (2171) NimBLE: disc_mode=2
+I (2171) NimBLE:  adv_channel_map=0 own_addr_type=0 adv_filter_policy=0 adv_itvl_min=0 adv_itvl_max=0
+I (2180) NimBLE: 
+
+I (2183) service_ble: [ok/0x0000] ble advertising name=PathFinder Nav service=0xFFF0 nav_char=0xFF01 obd_char=0xFF02
+I (2193) service_ble: [ok/0x0000] shared ble service ready name=PathFinder Nav service=0xFFF0 nav_char=0xFF01 obd_char=0xFF02 att_payload=20 nav_budget=20
+I (2206) obd_provider: obd adapter profile active=generic_elm327_ble name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2 write_no_rsp=1
+I (2218) obd_provider: vgate candidate profile name_filter=VLINK svc=0x18F0 notify=0x2AF0 write=0x2AF1 write_no_rsp=1
+I (2230) obd_provider: obd provider backend selected=service_ble_elm327
+I (2235) service_obd: [ok/0x0000] obd service ready provider=service_ble_elm327 core=0 priority=2 timeout=3000ms
+I (2490) spd2010: LCD panel create success, version: 2.0.0
+I (2671) SPD2010: Touch panel create success, version: 2.0.1
+I (2672) drivers_display: touch int level after pull-up restore=0
+I (2674) LVGL: Starting LVGL task
+E (2682) spd2010: swap_xy is not supported by this panel
+I (2683) drivers_display: [ok/0x0000] LCD and LVGL ready touch=enabled
+I (2771) service_ui: [ok/0x0000] UI service initialized with LVGL
+I (2776) drivers_power: [ok/0x0000] battery adc ready gpio=8 channel=7 calibrated=1
+I (2778) service_power: [ok/0x0000] power service ready dim=1800000ms sleep_ready=3600000ms core=0 priority=1
+I (2786) main_task: Returned from app_main()
+I (2790) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/0mV audio=none idle=1604ms backlight=1 rtc_valid=1
+E (2860) lcd_panel.io.i2c: panel_io_i2c_tx_buffer(193): i2c transaction failed
+E (2860) SPD2010: write_tp_cpu_start_cmd(275): Tx failed
+E (2861) SPD2010: tp_read_data(448): Write cpu start cmd failed
+E (2867) SPD2010: read_data(160): read data failed
+I (4254) NimBLE: GAP procedure initiated: discovery; 
+I (4255) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (4258) NimBLE: duration=forever
+I (4259) NimBLE: 
+
+I (4263) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+E (6267) i2c.master: i2c_master_bus_rm_device(1205): Wrong I2C status, cannot delete device
+I (7803) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=6607ms backlight=1 rtc_valid=1
+I (12319) drivers_display: touch health reads=128 ok=127 fail=1 pressed=0 int=1
+I (12809) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=11609ms backlight=1 rtc_valid=1
+I (17815) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=16611ms backlight=1 rtc_valid=1
+W (19274) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (19475) NimBLE: GAP procedure initiated: discovery; 
+I (19475) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (19478) NimBLE: duration=forever
+I (19482) NimBLE: 
+
+I (19483) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (21780) drivers_display: touch health reads=256 ok=255 fail=1 pressed=0 int=1
+I (22820) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=21612ms backlight=1 rtc_valid=1
+E (24339) i2c.master: i2c_master_bus_rm_device(1205): Wrong I2C status, cannot delete device
+I (27824) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=26632ms backlight=1 rtc_valid=1
+I (31320) drivers_display: touch health reads=384 ok=383 fail=1 pressed=0 int=1
+I (32827) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4213mV audio=none idle=31635ms backlight=1 rtc_valid=1
+W (34495) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (34698) NimBLE: GAP procedure initiated: discovery; 
+I (34699) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (34702) NimBLE: duration=forever
+I (34703) NimBLE: 
+
+I (34707) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (37832) app_main: [ok/0x0000] heartbeat | page=system ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=36636ms backlight=1 rtc_valid=1

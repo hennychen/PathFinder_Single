@@ -1,0 +1,10 @@
+{
+  "callback": "onNaviInfoUpdate",
+  "naviInfo": {
+    "iconType": 15,
+    "currentRoadName": "Destination Ramp",
+    "routeRemainDistance": 30,
+    "routeRemainTime": 12,
+    "segmentRemainDistance": 30
+  }
+}

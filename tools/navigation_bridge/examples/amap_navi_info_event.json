@@ -1,0 +1,11 @@
+{
+  "callback": "onNaviInfoUpdate",
+  "naviInfo": {
+    "iconType": 3,
+    "currentRoadName": "Century Avenue",
+    "nextRoadName": "Renmin Road",
+    "routeRemainDistance": 1860,
+    "routeRemainTime": 300,
+    "segmentRemainDistance": 120
+  }
+}
