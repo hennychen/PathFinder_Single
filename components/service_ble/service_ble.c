@@ -6,6 +6,7 @@
 #include "app_status.h"
 #include "esp_check.h"
 #include "freertos/FreeRTOS.h"
+#include "host/ble_att.h"
 #include "host/ble_gap.h"
 #include "host/ble_hs_adv.h"
 #include "host/ble_hs.h"
@@ -42,7 +43,14 @@ static void nimble_host_task(void *param);
 
 static uint16_t bridge_payload_budget(size_t characteristic_max_size)
 {
-    const uint16_t transport_budget = s_att_payload_budget > 0U ? s_att_payload_budget : BLE_ATT_DEFAULT_PAYLOAD_MAX;
+    // Query the live negotiated MTU for the active connection instead of a
+    // cached event-order-dependent value: on reconnect the MTU-exchange
+    // complete event can be processed before the CONNECT event callback,
+    // which would wrongly reset the budget to the 20B default.
+    const uint16_t conn_mtu = ble_att_mtu(s_active_conn_handle);
+    const uint16_t transport_budget = (conn_mtu > BLE_ATT_WRITE_OVERHEAD)
+                                          ? (uint16_t)(conn_mtu - BLE_ATT_WRITE_OVERHEAD)
+                                          : BLE_ATT_DEFAULT_PAYLOAD_MAX;
     return (transport_budget < characteristic_max_size) ? transport_budget : (uint16_t)characteristic_max_size;
 }
 
@@ -185,8 +193,11 @@ static int ble_gap_event_handler(struct ble_gap_event *event, void *arg)
     switch (event->type) {
     case BLE_GAP_EVENT_CONNECT:
         if (event->connect.status == 0) {
+            // Note: no budget reset here. The budget is queried live via
+            // ble_att_mtu() on every write, and on a reconnect the MTU event
+            // may arrive before this callback, so resetting here would
+            // wrongly clamp writes to the 20B default.
             s_active_conn_handle = event->connect.conn_handle;
-            s_att_payload_budget = BLE_ATT_DEFAULT_PAYLOAD_MAX;
             app_state_set_ble_phone_connected(true);
             APP_LOGI(TAG,
                      APP_STATUS_OK,

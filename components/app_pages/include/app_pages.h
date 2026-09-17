@@ -9,6 +9,7 @@ typedef enum {
     PAGE_OBD,
     PAGE_SYSTEM,
     PAGE_VOICE,
+    PAGE_INCLINE,
     PAGE_COUNT
 } app_page_id_t;
 

@@ -143,6 +143,7 @@ static void task_attitude(void *arg)
                 app_state_set_attitude(filtered_roll_deg,
                                        filtered_pitch_deg,
                                        (uint16_t)(heading_deg + 0.5f));
+                app_state_set_imu_temperature(sample.temperature_c);
             }
         }
 

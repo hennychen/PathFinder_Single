@@ -73,7 +73,7 @@
 - `drivers_power` 当前已按官方 demo 的 `GPIO8 / ADC1_CH7 / ADC_ATTEN_DB_12` 接入电池采样，并沿用官方 `*3.0 / 0.990476` 分压修正口径；当前百分比采用首版 Li-ion 分段近似曲线
 - `service_log` 当前已按板载 TF 的 SPI 走线 `GPIO14/16/17 + EXIO3` 接入 `/sdcard` 挂载，并把 ESP-IDF 运行时日志同步追加到 `/sdcard/pathfinder.log`
 - `service_audio` 当前已作为系统级音频仲裁层落地：统一管理 MIC / Speaker 请求、优先级与 I2S 通道开关，首版优先级固定为 `voice > obd > navigation > system`
-- `service_power` 当前已作为系统级电源策略骨架落地：基于 `last_user_action_ms` 评估空闲时长，`30s` 无操作后关闭背光，`120s` 后执行真实 `light sleep`；首版唤醒源固定为 `BOOT(GPIO0)` 与 `Touch INT(GPIO4)`
+- `service_power` 当前已作为系统级电源策略骨架落地：基于 `last_user_action_ms` 评估空闲时长，`30min` 无操作后关闭背光，`60min` 后允许进入 `light sleep`；当前为 bring-up 放宽版阈值（原设计目标 `30s / 120s`，待整机联调后再收紧）；首版唤醒源固定为 `BOOT(GPIO0)` 与 `Touch INT(GPIO4)`
 - `voice_backend` 当前作为 `xiaozhi-esp32` 的独立适配层落在仓库内，接入策略固定为“组件化引入”，当前占位实现先提供后端信息与状态回调骨架
 - `service_voice_init()` 当前会串起 `drivers_audio_init()` 以及输入/输出通道 enable，作为后续集成 `xiaozhi-esp32` 的最小音频底座
 - `service_voice` 当前已创建 `task_voice`（Core 1 / Priority 6）与命令队列，状态变更统一走异步命令入口，再由后端回调映射回 `WorkflowState`

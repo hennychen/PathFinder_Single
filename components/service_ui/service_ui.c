@@ -75,6 +75,16 @@ static lv_obj_t *s_voice_input_caption;
 static lv_obj_t *s_voice_input_bar;
 static lv_obj_t *s_voice_output_caption;
 static lv_obj_t *s_voice_output_bar;
+static lv_obj_t *s_incline_panel;
+static lv_obj_t *s_incline_arc_left;
+static lv_obj_t *s_incline_arc_right;
+static lv_obj_t *s_incline_pitch_slider;
+static lv_obj_t *s_incline_roll_label;
+static lv_obj_t *s_incline_pitch_label;
+static lv_obj_t *s_incline_temp_label;
+static lv_obj_t *s_incline_ota_btn;
+static lv_obj_t *s_incline_ota_btn_label;
+static bool s_incline_ota_requested;
 static voice_runtime_state_t s_last_voice_runtime;
 static TaskHandle_t s_ui_task;
 
@@ -85,6 +95,8 @@ static uint32_t get_page_refresh_period_ms(app_page_id_t page)
         return 50;
     case PAGE_COMPASS:
         return 100;
+    case PAGE_INCLINE:
+        return 50;
     case PAGE_NAV:
         return 200;
     case PAGE_OBD:
@@ -482,13 +494,21 @@ static void format_nav_eta(uint16_t remain_time_s, char *buffer, size_t buffer_s
     }
 }
 
-static void set_special_pages_visible(bool voice_visible, bool nav_visible, bool obd_visible)
+static void set_special_pages_visible(bool voice_visible, bool nav_visible, bool obd_visible, bool incline_visible)
 {
     if (s_body_label != NULL) {
-        if (voice_visible || nav_visible || obd_visible) {
+        if (voice_visible || nav_visible || obd_visible || incline_visible) {
             lv_obj_add_flag(s_body_label, LV_OBJ_FLAG_HIDDEN);
         } else {
             lv_obj_clear_flag(s_body_label, LV_OBJ_FLAG_HIDDEN);
+        }
+    }
+
+    if (s_incline_panel != NULL) {
+        if (incline_visible) {
+            lv_obj_clear_flag(s_incline_panel, LV_OBJ_FLAG_HIDDEN);
+        } else {
+            lv_obj_add_flag(s_incline_panel, LV_OBJ_FLAG_HIDDEN);
         }
     }
 
@@ -515,6 +535,68 @@ static void set_special_pages_visible(bool voice_visible, bool nav_visible, bool
             lv_obj_add_flag(s_obd_panel, LV_OBJ_FLAG_HIDDEN);
         }
     }
+}
+
+static void incline_ota_event_cb(lv_event_t *e)
+{
+    (void)e;
+    // OTA 触发标记：真实固件更新流程由外部 OTA 服务消费该标记
+    s_incline_ota_requested = true;
+    if (s_incline_ota_btn_label != NULL) {
+        lv_label_set_text(s_incline_ota_btn_label, "OTA pending...");
+    }
+}
+
+// QMI8658 → roll/pitch → LVGL widget update
+static void render_incline_page_locked(const workflow_state_t *state)
+{
+    char roll_buf[24] = {0};
+    char pitch_buf[24] = {0};
+    char temp_buf[24] = {0};
+
+    // 1. roll 限幅到 ±45° 显示范围
+    float roll = state->roll_deg;
+    if (roll > 45.0f) {
+        roll = 45.0f;
+    }
+    if (roll < -45.0f) {
+        roll = -45.0f;
+    }
+
+    // 2. 根据正负值更新对应弧（左弧负角度 / 右弧正角度）
+    if (roll >= 0.0f) {
+        lv_arc_set_value(s_incline_arc_right, (int16_t)(roll + 0.5f));
+        lv_arc_set_value(s_incline_arc_left, 0);
+    } else {
+        lv_arc_set_value(s_incline_arc_left, (int16_t)(-roll + 0.5f));
+        lv_arc_set_value(s_incline_arc_right, 0);
+    }
+
+    // 3. 更新中央俯仰滑块（-45..+45）
+    float pitch = state->pitch_deg;
+    if (pitch > 45.0f) {
+        pitch = 45.0f;
+    }
+    if (pitch < -45.0f) {
+        pitch = -45.0f;
+    }
+    lv_slider_set_value(s_incline_pitch_slider, (int16_t)(pitch + 0.5f), LV_ANIM_OFF);
+
+    // 4. 状态颜色：|angle| > 30° 告警黄，否则正常绿
+    const lv_color_t roll_color = (roll > 30.0f || roll < -30.0f) ? lv_color_hex(0xFFCC00) : lv_color_hex(0x00FF00);
+    const lv_color_t pitch_color =
+        (pitch > 30.0f || pitch < -30.0f) ? lv_color_hex(0xFFCC00) : lv_color_hex(0x00FF00);
+    lv_obj_set_style_arc_color(s_incline_arc_left, roll_color, LV_PART_INDICATOR);
+    lv_obj_set_style_arc_color(s_incline_arc_right, roll_color, LV_PART_INDICATOR);
+    lv_obj_set_style_bg_color(s_incline_pitch_slider, pitch_color, LV_PART_INDICATOR);
+
+    // 5. 更新数值标签
+    snprintf(roll_buf, sizeof(roll_buf), "R %.1f", (double)state->roll_deg);
+    snprintf(pitch_buf, sizeof(pitch_buf), "P %.1f", (double)state->pitch_deg);
+    snprintf(temp_buf, sizeof(temp_buf), "%.0f C", (double)state->imu_temperature_c);
+    lv_label_set_text(s_incline_roll_label, roll_buf);
+    lv_label_set_text(s_incline_pitch_label, pitch_buf);
+    lv_label_set_text(s_incline_temp_label, temp_buf);
 }
 
 static void render_nav_page_locked(const workflow_state_t *state)
@@ -884,16 +966,19 @@ static void render_page_locked(app_page_id_t page, const workflow_state_t *state
     lv_label_set_text(s_footer_label, footer_buf);
 
     if (page == PAGE_VOICE) {
-        set_special_pages_visible(true, false, false);
+        set_special_pages_visible(true, false, false, false);
         render_voice_page_locked(state);
     } else if (page == PAGE_NAV) {
-        set_special_pages_visible(false, true, false);
+        set_special_pages_visible(false, true, false, false);
         render_nav_page_locked(state);
     } else if (page == PAGE_OBD) {
-        set_special_pages_visible(false, false, true);
+        set_special_pages_visible(false, false, true, false);
         render_obd_page_locked(state);
+    } else if (page == PAGE_INCLINE) {
+        set_special_pages_visible(false, false, false, true);
+        render_incline_page_locked(state);
     } else {
-        set_special_pages_visible(false, false, false);
+        set_special_pages_visible(false, false, false, false);
         lv_label_set_text(s_body_label, body_buf);
     }
 }
@@ -955,6 +1040,15 @@ static esp_err_t build_screen_locked(void)
     for (size_t i = 0; i < 5; ++i) {
         s_voice_wave_bars[i] = lv_obj_create(s_voice_wave_wrap);
     }
+    s_incline_panel = lv_obj_create(s_screen);
+    s_incline_arc_left = lv_arc_create(s_incline_panel);
+    s_incline_arc_right = lv_arc_create(s_incline_panel);
+    s_incline_pitch_slider = lv_slider_create(s_incline_panel);
+    s_incline_roll_label = lv_label_create(s_incline_panel);
+    s_incline_pitch_label = lv_label_create(s_incline_panel);
+    s_incline_temp_label = lv_label_create(s_incline_panel);
+    s_incline_ota_btn = lv_btn_create(s_incline_panel);
+    s_incline_ota_btn_label = lv_label_create(s_incline_ota_btn);
     if (s_title_label == NULL || s_body_label == NULL || s_footer_label == NULL || s_nav_panel == NULL ||
         s_nav_status_chip == NULL || s_nav_turn_label == NULL || s_nav_arrow_label == NULL ||
         s_nav_distance_label == NULL || s_nav_road_label == NULL || s_nav_detail_label == NULL ||
@@ -969,7 +1063,10 @@ static esp_err_t build_screen_locked(void)
         s_voice_bubble_in == NULL || s_voice_bubble_in_label == NULL || s_voice_bubble_out == NULL ||
         s_voice_bubble_out_label == NULL || s_voice_timeline_label == NULL || s_voice_metrics_label == NULL ||
         s_voice_input_caption == NULL || s_voice_input_bar == NULL || s_voice_output_caption == NULL ||
-        s_voice_output_bar == NULL) {
+        s_voice_output_bar == NULL ||
+        s_incline_panel == NULL || s_incline_arc_left == NULL || s_incline_arc_right == NULL ||
+        s_incline_pitch_slider == NULL || s_incline_roll_label == NULL || s_incline_pitch_label == NULL ||
+        s_incline_temp_label == NULL || s_incline_ota_btn == NULL || s_incline_ota_btn_label == NULL) {
         return ESP_ERR_NO_MEM;
     }
     for (size_t i = 0; i < 5; ++i) {
@@ -1246,6 +1343,55 @@ static esp_err_t build_screen_locked(void)
     lv_bar_set_range(s_voice_output_bar, 0, 100);
     lv_obj_set_style_bg_color(s_voice_output_bar, lv_color_hex(0x1A2536), LV_PART_MAIN);
     lv_obj_set_style_bg_color(s_voice_output_bar, lv_color_hex(0x4DA3FF), LV_PART_INDICATOR);
+
+    lv_obj_set_size(s_incline_panel, 360, 304);
+    lv_obj_align(s_incline_panel, LV_ALIGN_CENTER, 0, 8);
+    lv_obj_clear_flag(s_incline_panel, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_color(s_incline_panel, lv_color_hex(0x0E1624), 0);
+    lv_obj_set_style_border_color(s_incline_panel, lv_color_hex(0x1C2B40), 0);
+    lv_obj_set_style_radius(s_incline_panel, 24, 0);
+    lv_obj_set_style_pad_all(s_incline_panel, 18, 0);
+    lv_obj_add_flag(s_incline_panel, LV_OBJ_FLAG_HIDDEN);
+
+    // Side-by-side roll arcs: left arc mirrors negative roll, right arc shows positive roll.
+    lv_obj_set_size(s_incline_arc_left, 120, 120);
+    lv_obj_align(s_incline_arc_left, LV_ALIGN_TOP_LEFT, 8, 30);
+    lv_arc_set_rotation(s_incline_arc_left, 0);
+    lv_arc_set_bg_angles(s_incline_arc_left, 0, 300);
+    lv_arc_set_range(s_incline_arc_left, 0, 45);
+    lv_obj_remove_style(s_incline_arc_left, NULL, LV_PART_KNOB);
+    lv_obj_clear_flag(s_incline_arc_left, LV_OBJ_FLAG_CLICKABLE);
+
+    lv_obj_set_size(s_incline_arc_right, 120, 120);
+    lv_obj_align(s_incline_arc_right, LV_ALIGN_TOP_RIGHT, -8, 30);
+    lv_arc_set_rotation(s_incline_arc_right, 0);
+    lv_arc_set_bg_angles(s_incline_arc_right, 0, 300);
+    lv_arc_set_range(s_incline_arc_right, 0, 45);
+    lv_obj_remove_style(s_incline_arc_right, NULL, LV_PART_KNOB);
+    lv_obj_clear_flag(s_incline_arc_right, LV_OBJ_FLAG_CLICKABLE);
+
+    lv_obj_set_size(s_incline_pitch_slider, 120, 16);
+    lv_obj_align(s_incline_pitch_slider, LV_ALIGN_BOTTOM_MID, 0, -74);
+    lv_slider_set_range(s_incline_pitch_slider, -45, 45);
+    lv_obj_clear_flag(s_incline_pitch_slider, LV_OBJ_FLAG_CLICKABLE);
+
+    lv_obj_align(s_incline_roll_label, LV_ALIGN_TOP_LEFT, 22, 158);
+    lv_obj_set_style_text_color(s_incline_roll_label, lv_color_hex(0xD9E4F0), 0);
+    lv_label_set_text(s_incline_roll_label, "R 0.0");
+
+    lv_obj_align(s_incline_pitch_label, LV_ALIGN_TOP_RIGHT, -22, 158);
+    lv_obj_set_style_text_align(s_incline_pitch_label, LV_TEXT_ALIGN_RIGHT, 0);
+    lv_obj_set_style_text_color(s_incline_pitch_label, lv_color_hex(0xD9E4F0), 0);
+    lv_label_set_text(s_incline_pitch_label, "P 0.0");
+
+    lv_obj_align(s_incline_temp_label, LV_ALIGN_TOP_MID, 0, 158);
+    lv_obj_set_style_text_color(s_incline_temp_label, lv_color_hex(0x8FA1B8), 0);
+    lv_label_set_text(s_incline_temp_label, "-- C");
+
+    lv_obj_set_size(s_incline_ota_btn, 140, 44);
+    lv_obj_align(s_incline_ota_btn, LV_ALIGN_BOTTOM_MID, 0, -14);
+    lv_obj_add_event_cb(s_incline_ota_btn, incline_ota_event_cb, LV_EVENT_CLICKED, NULL);
+    lv_label_set_text(s_incline_ota_btn_label, "OTA Update");
 
     lv_obj_set_width(s_footer_label, 360);
     lv_label_set_long_mode(s_footer_label, LV_LABEL_LONG_WRAP);

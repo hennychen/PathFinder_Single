@@ -220,6 +220,13 @@ void app_state_set_attitude(float roll_deg, float pitch_deg, uint16_t heading_de
     app_state_unlock();
 }
 
+void app_state_set_imu_temperature(float temperature_c)
+{
+    app_state_lock();
+    s_state.imu_temperature_c = temperature_c;
+    app_state_unlock();
+}
+
 void app_state_set_navigation_state(const navigation_runtime_state_t *nav_state)
 {
     if (nav_state == NULL) {

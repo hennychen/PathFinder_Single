@@ -1,4 +1,4 @@
-﻿# 验证证据目录
+# 验证证据目录
 
 用于存放各阶段的：
 
@@ -28,13 +28,12 @@
 | SPD2010 触摸（含手指验收） | `logs/spd-run4.log`（2026-09-17）：`pressed=57`、`touch down x=253 y=251 strength=183`、10 次滑动切页全部成功、health `reads=512 ok=511 fail=1` | **通过，P1 收口**。根因与修复见 `debug-spd2010-touch.md`（CLOSED） |
 | RTC 读时 + 走时保持 | `logs/spd-run4.log`：`ctrl1=0x01`（12.5pF 配置生效）、读回 `2026-01-01 11:03:07`（播种后约 11h 持续走时，掉电保持有效）；OS 停振标志校验已加入 | 通过 |
 | OBD 扫描 | `logs/spd-run*.log`：BLE 扫描运行中，`open elm327 ble client failed: ESP_ERR_TIMEOUT`（无 ELM327 实物，预期失败） | 代码路径验证通过；真链路待实物 |
-| 导航 BLE | 心跳 `nav=0`（无手机连接，预期） | 桌面桥 `tools/bridge_demo.py` 回归通过；真机手机包待联调 |
+| 导航 BLE 真包 | `logs/nav-ble-run1.log` + `logs/nav-ble-run2.log`（2026-09-17，桌面 bleak 桥）：整包/2 分片/3 分片（长中文路名 UTF-8 安全截断）全部解析成功、页面强制拉起 `page resolved system -> navigation`、心跳 `nav=1`、10s 超时干净退出；run2 复测验证 MTU 事件乱序下 33B 整包（40B 预算）写入成功 | **通过**（桌面桥链路）。发现并修复重连 MTU 竞态（预算改为写入时查询 `ble_att_mtu`）；真机手机包待后续验证 |
 | 电池 ADC | 心跳 `bat=100%/4210mV`（首帧 `0mV` 为采样首读占位） | 基本通过，百分比曲线待实测校准 |
 
 ### 待补证据（按优先级）
 
 1. 触摸真人手指触压采集（关闭 P1 最后一项）
 2. ELM327（Vgate iCar Pro BLE 4.0）实物广播名/UUID + AT 初始化 + 5 项 PID 真值
-3. 手机导航 BLE 真包联调（或先用桌面 bleak 桥代替）
-4. 轻睡眠进入/唤醒恢复（BLE/语音/SD flush）
-5. 页面切换与 OBD 告警抢占实拍/录屏
+3. 轻睡眠进入/唤醒恢复（BLE/语音/SD flush）
+4. 页面切换与 OBD 告警抢占实拍/录屏
