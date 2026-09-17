@@ -12,3 +12,4 @@ managed_components/
 # IDE
 .vscode/
 .idea/
+docs/materials/*.zip
