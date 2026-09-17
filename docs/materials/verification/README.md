@@ -1,4 +1,4 @@
-# 验证证据目录
+﻿# 验证证据目录
 
 用于存放各阶段的：
 
@@ -25,7 +25,8 @@
 | 证据 | 日志 | 结论 |
 | :--- | :--- | :--- |
 | QMI8658 全链路 | `logs/qmi-run3/4/5.log`：`chip=0x05`、`revision=0x7C`、官方序列完成、attitude ready（gyro_bias 校准通过） | 三轮全绿，根因见 `debug-qmi8658-min-bringup.md` |
-| SPD2010 触摸（电气/时序层） | `logs/spd-run1/2/3.log`：面板创建成功、触摸健康计数正常 | 根因修复已验证；**待真人手指触压采集**关闭 `debug-spd2010-touch.md`（RESOLVED-PENDING-FINGER-TEST） |
+| SPD2010 触摸（含手指验收） | `logs/spd-run4.log`（2026-09-17）：`pressed=57`、`touch down x=253 y=251 strength=183`、10 次滑动切页全部成功、health `reads=512 ok=511 fail=1` | **通过，P1 收口**。根因与修复见 `debug-spd2010-touch.md`（CLOSED） |
+| RTC 读时 + 走时保持 | `logs/spd-run4.log`：`ctrl1=0x01`（12.5pF 配置生效）、读回 `2026-01-01 11:03:07`（播种后约 11h 持续走时，掉电保持有效）；OS 停振标志校验已加入 | 通过 |
 | OBD 扫描 | `logs/spd-run*.log`：BLE 扫描运行中，`open elm327 ble client failed: ESP_ERR_TIMEOUT`（无 ELM327 实物，预期失败） | 代码路径验证通过；真链路待实物 |
 | 导航 BLE | 心跳 `nav=0`（无手机连接，预期） | 桌面桥 `tools/bridge_demo.py` 回归通过；真机手机包待联调 |
 | 电池 ADC | 心跳 `bat=100%/4210mV`（首帧 `0mV` 为采样首读占位） | 基本通过，百分比曲线待实测校准 |

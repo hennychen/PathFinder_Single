@@ -1,6 +1,6 @@
-# SPD2010 Touch Read Failure — Debug Record
+﻿# SPD2010 Touch Read Failure — Debug Record
 
-- Status: **RESOLVED-PENDING-FINGER-TEST** (3 root causes fixed & verified by evidence; final coordinate-report test needs a human finger)
+- Status: **CLOSED - RESOLVED** (finger acceptance test passed on 2026-09-17, logs/spd-run4.log)
 - Priority: 2 (user-defined, after QMI8658 CLOSED-RESOLVED)
 - Log basis: `logs/normal-run4.log`, `logs/spd-run1.log`, `logs/spd-run2.log`, `logs/spd-run3.log`
 
@@ -62,6 +62,7 @@ E (10769/27924/28409) i2c.master: i2c_master_bus_rm_device(1205): Wrong I2C stat
 
 ## 6. Remaining
 
-- **Finger test**: press/swipe screen during a capture — expect `pressed>0`, `service_ui: touch down x=.. y=..` log, and LVGL widget response (page swipe). This is the only unverified acceptance item.
+- ~~Finger test~~ **PASSED (2026-09-17, `logs/spd-run4.log`)**: `pressed=57`, `touch down x=253 y=251 strength=183`, 10 swipe page-changes (`system->attitude->compass->navigation->obd->...`), health `reads=512 ok=511 fail=1` (single fail = known boot window).
+- Note: one user report of "swipe dead, BOOT works" on the previous firmware build could not be reproduced on the rebuilt firmware; BOOT and swipe share the same `step_to_page()` path and voice stayed idle, so it was not a page-lock. If it recurs on a long-running device, capture immediately — `touch down` lines and `int=` level will discriminate a TP state-machine stall.
 - Optional cleanup (not blocking): the IDF-side E log on first rm attempt is cosmetic noise.
 

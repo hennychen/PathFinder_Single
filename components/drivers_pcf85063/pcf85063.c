@@ -12,6 +12,13 @@ enum {
     PCF85063_REG_SECONDS = 0x04,
 };
 
+// CTRL1: 24h mode, oscillator running, 12.5pF crystal load (matches the
+// onboard crystal per vendor demo; the 7pF default runs the RTC off-frequency).
+#define PCF85063_CTRL1_CAP_SEL 0x01
+// Seconds register bit 7: oscillator stopped flag. Time registers hold
+// invalid values while OS=1 (first power-up / battery swap).
+#define PCF85063_SECONDS_OS 0x80
+
 static i2c_master_dev_handle_t s_i2c_handle;
 
 static esp_err_t ensure_i2c_device(void)
@@ -45,15 +52,25 @@ esp_err_t pcf85063_init(void)
 
     ESP_RETURN_ON_ERROR(ensure_i2c_device(), TAG, "create rtc i2c handle failed");
 
-    const esp_err_t err = i2c_master_transmit_receive(s_i2c_handle,
-                                                      &reg_addr,
-                                                      sizeof(reg_addr),
-                                                      &ctrl1,
-                                                      sizeof(ctrl1),
-                                                      100);
-    if (err != ESP_OK) {
-        ESP_LOGW(TAG, "probe failed: %s", esp_err_to_name(err));
-        return err;
+    const esp_err_t probe_err = i2c_master_transmit_receive(s_i2c_handle,
+                                                            &reg_addr,
+                                                            sizeof(reg_addr),
+                                                            &ctrl1,
+                                                            sizeof(ctrl1),
+                                                            100);
+    if (probe_err != ESP_OK) {
+        ESP_LOGW(TAG, "probe failed: %s", esp_err_to_name(probe_err));
+        return probe_err;
+    }
+
+    // Match the vendor bring-up config: 12.5pF load capacitance, 24h mode,
+    // software reset/stop bits cleared so the oscillator keeps running.
+    ctrl1 = PCF85063_CTRL1_CAP_SEL;
+    const uint8_t payload[2] = {PCF85063_REG_CTRL1, ctrl1};
+    const esp_err_t write_err = i2c_master_transmit(s_i2c_handle, payload, sizeof(payload), 100);
+    if (write_err != ESP_OK) {
+        ESP_LOGW(TAG, "apply ctrl1 failed: %s", esp_err_to_name(write_err));
+        return write_err;
     }
 
     ESP_LOGI(TAG, "detected RTC at 0x%02X ctrl1=0x%02X", PCF85063_I2C_ADDR, ctrl1);
@@ -78,6 +95,13 @@ esp_err_t pcf85063_read_time(pcf85063_time_t *out_time)
                                                     100),
                         TAG,
                         "read time failed");
+
+    // Check the oscillator-stopped flag before decoding: while OS=1 the time
+    // registers hold garbage that can still decode to a "valid" fake time.
+    if ((raw[0] & PCF85063_SECONDS_OS) != 0) {
+        ESP_LOGW(TAG, "RTC oscillator stopped, time invalid");
+        return ESP_ERR_INVALID_STATE;
+    }
 
     out_time->second = bcd_to_dec(raw[0] & 0x7F);
     out_time->minute = bcd_to_dec(raw[1] & 0x7F);
