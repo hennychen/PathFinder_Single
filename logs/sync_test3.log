@@ -1,0 +1,218 @@
+I (759535) app_main: [ok/0x0000] heartbeat | page=navigation ui_I (904798) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=879127ms backlight=1 rtc_valid=1
+I (909406) drivers_display: touch health reads=12032 ok=12032 fail=0 pressed=11 int=1
+I (909801) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=884137ms backlight=1 rtc_valid=1
+I (914805) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=889138ms backlight=1 rtc_valid=1
+I (917207) service_ble: [ok/0x0000] ble phone connected conn=1 att_payload=20 nav_budget=20
+I (917358) service_ble: [ok/0x0000] ble mtu updated conn=1 mtu=256 att_payload=253 nav_budget=40
+I (917459) service_ble: [ok/0x0000] ble mtu updated conn=1 mtu=256 att_payload=253 nav_budget=40
+W (917757) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (917958) NimBLE: GAP procedure initiated: discovery; 
+I (917958) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (917961) NimBLE: duration=forever
+I (917964) NimBLE: 
+
+I (917966) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (919088) drivers_display: touch health reads=12160 ok=12160 fail=0 pressed=11 int=1
+I (919808) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=894153ms backlight=1 rtc_valid=1
+I (924826) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=899164ms backlight=1 rtc_valid=1
+I (928770) drivers_display: touch health reads=12288 ok=12288 fail=0 pressed=11 int=1
+I (929846) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=904170ms backlight=1 rtc_valid=1
+I (931558) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (931561) service_navigation: [nav_packet/0x2007] nav packet turn=straight step=435m total=5559m remain=1380s road=??????????????? packets=3
+W (932980) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (933183) NimBLE: GAP procedure initiated: discovery; 
+I (933184) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (933187) NimBLE: duration=forever
+I (933189) NimBLE: 
+
+I (933192) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (933558) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (933559) service_navigation: [nav_packet/0x2007] nav packet turn=straight step=420m total=5544m remain=1368s road=??????????????? packets=4
+I (934558) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (934559) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=404m total=5528m remain=1366s road=??????????????? packets=5
+I (934864) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=909177ms backlight=1 rtc_valid=1
+I (935558) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (935561) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=387m total=5511m remain=1364s road=??????????????? packets=6
+I (936558) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (936561) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=370m total=5494m remain=1363s road=??????????????? packets=7
+I (937558) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (937559) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=354m total=5478m remain=1361s road=??????????????? packets=8
+I (938559) drivers_display: touch health reads=12416 ok=12416 fail=0 pressed=11 int=1
+I (938608) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (938610) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=338m total=5462m remain=1359s road=??????????????? packets=9
+I (939608) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (939609) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=321m total=5445m remain=1358s road=??????????????? packets=10
+I (939870) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=914188ms backlight=1 rtc_valid=1
+I (940608) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (940611) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=305m total=5429m remain=1356s road=??????????????? packets=11
+I (941608) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (941609) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=288m total=5412m remain=1354s road=??????????????? packets=12
+I (942608) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (942609) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=271m total=5395m remain=1349s road=??????????????? packets=13
+I (943608) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (943609) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=255m total=5379m remain=1343s road=??????????????? packets=14
+I (944658) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (944659) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=238m total=5362m remain=1336s road=??????????????? packets=15
+I (944873) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=919191ms backlight=1 rtc_valid=1
+I (945658) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (945662) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=221m total=5345m remain=1328s road=??????????????? packets=16
+I (946658) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (946660) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=204m total=5328m remain=1321s road=??????????????? packets=17
+I (947658) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (947660) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=188m total=5312m remain=1315s road=??????????????? packets=18
+W (948221) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (948281) drivers_display: touch health reads=12544 ok=12544 fail=0 pressed=11 int=1
+I (948422) NimBLE: GAP procedure initiated: discovery; 
+I (948422) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (948429) NimBLE: duration=forever
+I (948430) NimBLE: 
+
+I (948433) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (948658) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (948661) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=171m total=5295m remain=1307s road=??????????????? packets=19
+I (949658) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (949661) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=157m total=5281m remain=1302s road=??????????????? packets=20
+I (949877) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=924199ms backlight=1 rtc_valid=1
+I (950708) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (950711) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=141m total=5265m remain=1293s road=??????????????? packets=21
+I (951708) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (951709) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=124m total=5248m remain=1284s road=??????????????? packets=22
+I (952708) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (952709) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=107m total=5231m remain=1280s road=??????????????? packets=23
+I (953708) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (953709) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=91m total=5215m remain=1276s road=??????????????? packets=24
+I (954758) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (954759) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=74m total=5198m remain=1273s road=??????????????? packets=25
+I (954891) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4210mV audio=none idle=929202ms backlight=1 rtc_valid=1
+I (955759) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (955761) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=58m total=5182m remain=1262s road=??????????????? packets=26
+I (956758) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (956761) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=41m total=5165m remain=1242s road=??????????????? packets=27
+I (957758) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (957759) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=24m total=5148m remain=1223s road=??????????????? packets=28
+I (958041) drivers_display: touch health reads=12672 ok=12672 fail=0 pressed=11 int=1
+I (958758) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (958759) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=8m total=5132m remain=1204s road=??????????????? packets=29
+I (959758) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (959761) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=0m total=5124m remain=1195s road=??????????????? packets=30
+I (959899) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=934206ms backlight=1 rtc_valid=1
+I (960758) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (960760) service_navigation: [nav_packet/0x2007] nav packet turn=u_turn step=517m total=5108m remain=1193s road=??????????????? packets=31
+I (961808) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (961810) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=501m total=5092m remain=1192s road=??????????????? packets=32
+I (962808) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (962810) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=484m total=5075m remain=1190s road=??????????????? packets=33
+W (963445) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (963645) NimBLE: GAP procedure initiated: discovery; 
+I (963645) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (963648) NimBLE: duration=forever
+I (963650) NimBLE: 
+
+I (963653) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (963808) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (963810) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=467m total=5058m remain=1188s road=??????????????? packets=34
+I (964808) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (964811) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=450m total=5041m remain=1187s road=??????????????? packets=35
+I (964903) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=939227ms backlight=1 rtc_valid=1
+I (965808) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (965811) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=434m total=5025m remain=1185s road=??????????????? packets=36
+I (966858) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (966860) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=417m total=5008m remain=1184s road=??????????????? packets=37
+I (967725) drivers_display: touch health reads=12800 ok=12800 fail=0 pressed=11 int=1
+I (967858) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (967860) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=400m total=4991m remain=1182s road=??????????????? packets=38
+I (968858) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (968860) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=384m total=4975m remain=1181s road=??????????????? packets=39
+I (969859) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (969862) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=367m total=4958m remain=1179s road=??????????????? packets=40
+I (969907) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4210mV audio=none idle=944237ms backlight=1 rtc_valid=1
+I (970858) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (970860) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=350m total=4941m remain=1177s road=??????????????? packets=41
+I (971908) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (971911) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=333m total=4924m remain=1176s road=??????????????? packets=42
+I (972908) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (972911) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=317m total=4908m remain=1174s road=??????????????? packets=43
+I (973908) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (973911) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=300m total=4891m remain=1173s road=??????????????? packets=44
+I (974909) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (974912) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=283m total=4874m remain=1171s road=??????????????? packets=45
+I (974925) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=949244ms backlight=1 rtc_valid=1
+I (975908) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (975911) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=266m total=4857m remain=1169s road=??????????????? packets=46
+I (976958) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (976960) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=260m total=4851m remain=1169s road=??????????????? packets=47
+I (977366) drivers_display: touch health reads=12928 ok=12928 fail=0 pressed=11 int=1
+I (977958) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (977960) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=244m total=4835m remain=1167s road=??????????????? packets=48
+W (978665) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (978865) NimBLE: GAP procedure initiated: discovery; 
+I (978865) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (978868) NimBLE: duration=forever
+I (978871) NimBLE: 
+
+I (978873) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (978959) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (978962) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=228m total=4819m remain=1166s road=??????????????? packets=49
+I (979933) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=954254ms backlight=1 rtc_valid=1
+I (979959) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (979962) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=211m total=4802m remain=1165s road=??????????????? packets=50
+I (980958) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (980960) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=196m total=4787m remain=1160s road=??????????????? packets=51
+I (981958) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (981960) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=179m total=4770m remain=1154s road=??????????????? packets=52
+I (983008) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (983010) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=162m total=4753m remain=1149s road=??????????????? packets=53
+I (984009) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (984012) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=146m total=4737m remain=1144s road=??????????????? packets=54
+I (984939) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4210mV audio=none idle=959260ms backlight=1 rtc_valid=1
+I (985009) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (985012) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=129m total=4720m remain=1131s road=??????????????? packets=55
+I (986008) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (986010) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=113m total=4704m remain=1128s road=??????????????? packets=56
+I (987008) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (987010) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=108m total=4699m remain=1127s road=??????????????? packets=57
+I (987064) drivers_display: touch health reads=13056 ok=13056 fail=0 pressed=11 int=1
+I (988058) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (988060) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=108m total=4699m remain=1127s road=??????????????? packets=58
+I (989059) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (989062) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=96m total=4687m remain=1125s road=??????????????? packets=59
+I (989944) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4210mV audio=none idle=964267ms backlight=1 rtc_valid=1
+I (990059) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (990062) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=80m total=4671m remain=1123s road=??????????????? packets=60
+I (991058) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (991060) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=63m total=4654m remain=1121s road=??????????????? packets=61
+I (992058) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (992061) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=46m total=4637m remain=1120s road=??????????????? packets=62
+I (993108) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (993110) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=30m total=4621m remain=1118s road=??????????????? packets=63
+W (993891) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (994106) NimBLE: GAP procedure initiated: discovery; 
+I (994107) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (994109) NimBLE: duration=forever
+I (994112) NimBLE: 
+
+I (994116) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=23
+I (994124) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=13m total=4604m remain=1118s road=??????????????? packets=64
+I (994134) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (994950) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4201mV audio=none idle=969271ms backlight=1 rtc_valid=1
+I (995109) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=29
+I (995110) service_navigation: [nav_packet/0x2007] nav packet turn=left_front step=51m total=4588m remain=1117s road=????????????????????? packets=65
+I (996109) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=29
+I (996110) service_navigation: [nav_packet/0x2007] nav packet turn=right_front step=34m total=4571m remain=1115s road=????????????????????? packets=66
+I (996661) drivers_display: touch health reads=13184 ok=13184 fail=0 pressed=11 int=1
+I (997109) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=29
+I (997110) service_navigation: [nav_packet/0x2007] nav packet turn=right_front step=18m total=4555m remain=1112s road=????????????????????? packets=67
+I (998110) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=29
+I (998114) service_navigation: [nav_packet/0x2007] nav packet turn=right_front step=1m total=4538m remain=1110s road=????????????????????? packets=68
+I (999108) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=17
+I (999110) service_navigation: [nav_packet/0x2007] nav packet turn=right_front step=10m total=4521m remain=1103s road=????????? packets=69
+I (999955) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=1 obd=0 bat=100%/4204mV audio=none idle=974275ms backlight=1 rtc_valid=1
+I (1000159) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=20
+I (1000160) service_navigation: [nav_packet/0x2007] nav packet turn=right step=171m total=4505m remain=1098s road=???????????? packets=70
+I (1001159) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=20
+I (1001160) service_navigation: [nav_packet/0x2007] nav packet turn=left step=154m total=4488m remain=1095s road=???????????? packets=71
+I (1002159) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=20
+I (1002161) service_navigation: [nav_packet/0x2007] nav packet turn=left step=138m total=4472m remain=1092s road=???????????? packets=72
+I (1003159) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=20
+I (1003162) service_navigation: [nav_packet/0x2007] nav packet turn=left step=121m total=4455m remain=1089s road=???????????? packets=73
+I (1004159) service_ble: [ok/0x0000] navigation characteristic write conn=1 attr=16 len=20

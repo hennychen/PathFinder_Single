@@ -41,7 +41,7 @@ static esp_lcd_panel_io_handle_t s_panel_io;
 static esp_lcd_panel_handle_t s_panel;
 static esp_lcd_panel_io_handle_t s_touch_io;
 static esp_lcd_touch_handle_t s_touch;
-static lv_disp_t *s_lv_disp;
+static lv_display_t *s_lv_disp;
 static bool s_ready;
 static bool s_touch_available;
 static volatile bool s_touch_irq_pending;
@@ -190,6 +190,7 @@ static esp_err_t init_lvgl_display(void)
         .hres = LCD_H_RES,
         .vres = LCD_V_RES,
         .monochrome = false,
+        .color_format = LV_COLOR_FORMAT_RGB565,
         .rotation = {
             .swap_xy = false,
             .mirror_x = false,
@@ -199,6 +200,7 @@ static esp_err_t init_lvgl_display(void)
             .buff_dma = false,
             .buff_spiram = true,
             .sw_rotate = false,
+            .swap_bytes = true,
         },
     };
 
@@ -207,15 +209,10 @@ static esp_err_t init_lvgl_display(void)
         return ESP_FAIL;
     }
 
-    if (s_touch != NULL) {
-        const lvgl_port_touch_cfg_t touch_cfg = {
-            .disp = s_lv_disp,
-            .handle = s_touch,
-        };
-        if (lvgl_port_add_touch(&touch_cfg) == NULL) {
-            return ESP_FAIL;
-        }
-    }
+    /* 触摸输入只保留 service_ui 的自定义手势轮询一路消费者:
+     * 此处不再注册 LVGL indev。SPD2010 的 get_xy() 为消费式读取(读后清零),
+     * 若 LVGL indev 与 drivers_display_poll_touch 并发读取, I2C 事务交错会
+     * 破坏时序且坐标数据被双路抢占, 导致手势识别失效。 */
 
     return ESP_OK;
 }
@@ -315,6 +312,8 @@ esp_err_t drivers_display_poll_touch(drivers_display_touch_sample_t *out_sample)
     should_poll = s_touch_irq_pending || gpio_get_level(pins->touch_int_gpio) == 0;
     if (!should_poll) {
         if (++s_touch_poll_skip_count < 4) {
+            /* 节流跳读周期: 标记 skipped, 调用方不应将本次结果当作 "松手" */
+            out_sample->skipped = true;
             return ESP_OK;
         }
         s_touch_poll_skip_count = 0;
@@ -364,7 +363,7 @@ esp_err_t drivers_display_poll_touch(drivers_display_touch_sample_t *out_sample)
     return ESP_OK;
 }
 
-lv_disp_t *drivers_display_get_lv_disp(void)
+lv_display_t *drivers_display_get_lv_disp(void)
 {
     return s_lv_disp;
 }

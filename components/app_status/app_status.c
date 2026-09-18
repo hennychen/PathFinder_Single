@@ -69,6 +69,8 @@ const char *app_status_to_string(app_status_code_t code)
         return "power_policy";
     case APP_EVT_LOG_SINK:
         return "log_sink";
+    case APP_EVT_ATTITUDE_CALIB:
+        return "attitude_calibration";
     default:
         return "unknown_status";
     }

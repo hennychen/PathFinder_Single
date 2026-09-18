@@ -42,6 +42,7 @@ typedef enum {
     APP_EVT_AUDIO_POLICY = 0x200B,
     APP_EVT_POWER_POLICY = 0x200C,
     APP_EVT_LOG_SINK = 0x200D,
+    APP_EVT_ATTITUDE_CALIB = 0x200E,
 } app_status_code_t;
 
 const char *app_status_to_string(app_status_code_t code);

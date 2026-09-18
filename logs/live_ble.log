@@ -1,0 +1,13 @@
+--------- beginning of main
+09-18 16:39:27.031 24360 24360 I PathFinderBle: scanning for PathFinder Nav ...
+09-18 16:39:27.141 24360 24360 D PathFinderBle: adv: addr=12:FC:37:70:19:11 name=null
+09-18 16:39:27.142 24360 24360 D PathFinderBle: adv: addr=2E:DB:A0:FB:0D:DB name=null
+09-18 16:39:27.143 24360 24360 D PathFinderBle: adv: addr=0B:36:6F:AE:EF:2F name=null
+09-18 16:39:27.145 24360 24360 D PathFinderBle: adv: addr=52:D0:69:1E:6D:10 name=null
+09-18 16:39:27.146 24360 24360 D PathFinderBle: adv: addr=1E:6D:D5:35:89:CF name=null
+09-18 16:39:27.147 24360 24360 D PathFinderBle: adv: addr=94:A9:90:0F:D2:A2 name=PathFinder Nav
+09-18 16:39:27.151 24360 24360 I PathFinderBle: device found: PathFinder Nav 94:A9:90:0F:D2:A2
+09-18 16:39:27.151 24360 24360 I PathFinderBle: connecting 94:A9:90:0F:D2:A2
+09-18 16:39:27.421 24360 24408 I PathFinderBle: connected, discovering services
+09-18 16:39:27.448 24360 24408 I PathFinderBle: requesting mtu=256
+09-18 16:39:27.611 24360 24408 I PathFinderBle: mtu=256 status=0 payload_budget=40

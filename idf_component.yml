@@ -8,9 +8,9 @@ dependencies:
   espressif/esp_lcd_touch_spd2010:
     version: "^2.0.1"
   espressif/esp_lvgl_port:
-    version: "^2.6.1"
+    version: "^2.9.0"
   lahirunirmalx/esp_obd_ii:
     version: "^0.1.0"
   lvgl/lvgl:
-    version: "^8"
+    version: "^9"
     public: true

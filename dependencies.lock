@@ -86,12 +86,36 @@ dependencies:
     - esp32h2
     version: 0.1.0
   lvgl/lvgl:
-    component_hash: d7c1ac037ae6e85d94897f807d6e7ba0946a83e720074fc95a4f6241da9f9f53
-    dependencies: []
+    component_hash: d5e723db3a3feca71e34e333a6598b7624e3822577d374e1d44f0e18374952e1
+    dependencies:
+    - name: espressif/freetype
+      registry_url: https://components.espressif.com
+      require: private
+      rules:
+      - if: idf_version >=5.5 && $CONFIG{LV_USE_FREETYPE} == True
+      version: ^2.14.3
+    - name: espressif/libjpeg-turbo
+      registry_url: https://components.espressif.com
+      require: private
+      rules:
+      - if: idf_version >=5.5 && $CONFIG{LV_USE_LIBJPEG_TURBO} == True
+      version: ^3.1.1
+    - name: espressif/libpng
+      registry_url: https://components.espressif.com
+      require: private
+      rules:
+      - if: idf_version >=5.5 && $CONFIG{LV_USE_LIBPNG} == True
+      version: ^1.6.58
+    - name: espressif/lz4
+      registry_url: https://components.espressif.com
+      require: private
+      rules:
+      - if: idf_version >=5.5 && $CONFIG{LV_USE_LZ4} == True && $CONFIG{LV_USE_LZ4_INTERNAL} == False
+      version: ^1.10.0
     source:
       registry_url: https://components.espressif.com/
       type: service
-    version: 8.4.0
+    version: 9.6.0
 direct_dependencies:
 - espressif/esp_lcd_spd2010
 - espressif/esp_lcd_touch
@@ -100,6 +124,6 @@ direct_dependencies:
 - idf
 - lahirunirmalx/esp_obd_ii
 - lvgl/lvgl
-manifest_hash: 488b0ecac57b98071597d592baa6688d838a69982f7f328bb2a8f156f861a86e
+manifest_hash: e5da7a0e0b71d83d1a9a8773f8be07b1a18b4a4487b625553523dfc3cc877657
 target: esp32s3
 version: 3.0.0

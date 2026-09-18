@@ -98,6 +98,8 @@ typedef struct {
     float roll_deg;
     float pitch_deg;
     float imu_temperature_c;
+    bool attitude_calibrated;
+    bool attitude_calibrating;
     uint16_t heading_deg;
     uint16_t speed_kmh;
     uint16_t rpm;
@@ -163,6 +165,8 @@ void app_state_set_rtc_time(bool valid,
                             uint8_t minute,
                             uint8_t second);
 void app_state_set_attitude(float roll_deg, float pitch_deg, uint16_t heading_deg);
+void app_state_set_attitude_calibrated(bool calibrated);
+void app_state_set_attitude_calibrating(bool calibrating);
 void app_state_set_imu_temperature(float temperature_c);
 void app_state_set_navigation_state(const navigation_runtime_state_t *nav_state);
 void app_state_set_ble_obd_connected(bool connected);

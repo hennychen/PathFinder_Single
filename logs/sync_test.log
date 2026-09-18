@@ -1,0 +1,49 @@
+I (408025) drivers_display: touch health reads=5376 ok=5376 failI (484104) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=458297ms backlight=1 rtc_valid=1
+I (485075) drivers_display: touch health reads=6400 ok=6400 fail=0 pressed=11 int=1
+I (489107) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4201mV audio=none idle=463301ms backlight=1 rtc_valid=1
+W (491332) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (491533) NimBLE: GAP procedure initiated: discovery; 
+I (491534) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (491537) NimBLE: duration=forever
+I (491541) NimBLE: 
+
+I (491542) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (494113) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=468309ms backlight=1 rtc_valid=1
+I (494693) drivers_display: touch health reads=6528 ok=6528 fail=0 pressed=11 int=1
+I (499117) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=473326ms backlight=1 rtc_valid=1
+I (504122) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=478334ms backlight=1 rtc_valid=1
+I (504240) drivers_display: touch health reads=6656 ok=6656 fail=0 pressed=11 int=1
+W (506558) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (506758) NimBLE: GAP procedure initiated: discovery; 
+I (506758) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (506761) NimBLE: duration=forever
+I (506763) NimBLE: 
+
+I (506766) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (509126) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4201mV audio=none idle=483339ms backlight=1 rtc_valid=1
+I (513859) drivers_display: touch health reads=6784 ok=6784 fail=0 pressed=11 int=1
+I (514129) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=488343ms backlight=1 rtc_valid=1
+I (519136) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=493347ms backlight=1 rtc_valid=1
+W (521780) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (521981) NimBLE: GAP procedure initiated: discovery; 
+I (521981) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (521984) NimBLE: duration=forever
+I (521986) NimBLE: 
+
+I (521989) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (523622) drivers_display: touch health reads=6912 ok=6912 fail=0 pressed=11 int=1
+I (524140) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=498363ms backlight=1 rtc_valid=1
+I (529152) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=503368ms backlight=1 rtc_valid=1
+I (533323) drivers_display: touch health reads=7040 ok=7040 fail=0 pressed=11 int=1
+I (534156) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=508373ms backlight=1 rtc_valid=1
+W (537009) obd_ble_elm327: [obd_init_failed/0x1408] open elm327 ble client failed: ESP_ERR_TIMEOUT
+I (537212) NimBLE: GAP procedure initiated: discovery; 
+I (537213) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 
+I (537217) NimBLE: duration=forever
+I (537219) NimBLE: 
+
+I (537221) service_ble_cli: [ok/0x0000] ble client scanning name_filter=OBDII svc=0xFFF0 notify=0xFFF1 write=0xFFF2
+I (539160) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4210mV audio=none idle=513389ms backlight=1 rtc_valid=1
+I (543023) drivers_display: touch health reads=7168 ok=7168 fail=0 pressed=11 int=1
+I (544164) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4204mV audio=none idle=518400ms backlight=1 rtc_valid=1
+I (549177) app_main: [ok/0x0000] heartbeat | page=navigation ui_ready=1 voice=0 nav=0 obd=0 bat=100%/4213mV audio=none idle=523420ms backlight=1 rtc_valid=1
